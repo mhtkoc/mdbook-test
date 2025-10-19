@@ -1,0 +1,5 @@
+[book]
+authors = ["Muhammet Koc"]
+language = "tr"
+src = "src"
+title = "mhtkoc-blog"
