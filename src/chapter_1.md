@@ -1,16 +1,88 @@
 # Chapter 1
 
-Lorem Ipsum
-"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit leo ut lorem ultricies faucibus. Nam auctor pulvinar elit non pretium. Mauris pellentesque justo ut ex rutrum porttitor. Sed nibh lectus, sollicitudin egestas urna vel, elementum sollicitudin urna. Aliquam convallis, arcu eu venenatis feugiat, odio arcu efficitur tellus, in viverra eros nunc nec purus. Duis tincidunt faucibus feugiat. Suspendisse lacinia interdum elementum. Phasellus risus nibh, tincidunt vitae rhoncus vitae, finibus sit amet dolor. Sed eget maximus enim, sed aliquam felis. In luctus urna est, vel molestie quam cursus quis. Aliquam erat volutpat. Sed maximus, dolor a aliquam egestas, enim ipsum lacinia elit, pulvinar dapibus dolor turpis in ipsum. Maecenas euismod tristique libero, sed viverra eros placerat nec. Aliquam at vehicula ex. Fusce vulputate aliquam magna, et venenatis dolor ullamcorper dignissim. Pellentesque faucibus facilisis semper.
+Here is a Markdown document detailing the logic, mathematical foundation, and implementation of your C program.Sorting Triangles by Area in CThis program accepts a list of triangles defined by the lengths of their three sides ($a$, $b$, and $c$), calculates the area of each using Heron's Formula, and sorts them in ascending order based on their area.1. Mathematical Logic: Heron's FormulaTo calculate the area of a triangle when only the lengths of the sides are known, the program uses Heron's Formula.First, the semi-perimeter ($p$) is calculated:$$p = \frac{a + b + c}{2}$$Then, the area ($A$) is derived using:$$A = \sqrt{p(p-a)(p-b)(p-c)}$$2. Code Structure & AnalysisData StructureThe program uses a struct to organize the data. This keeps the three sides of a triangle grouped together as a single unit.Cstruct triangle {
+int a;
+int b;
+int c;
+};
+The sort_by_area FunctionThis function performs two main tasks:Calculation: It iterates through the array of triangles and computes the area for each, storing the results in a temporary area[] array.Sorting: It uses a nested loop algorithm (similar to Bubble Sort) to reorder the triangles.It compares the areas of the triangles.If a triangle has a smaller area than a preceding triangle, both the area value and the triangle struct are swapped.Memory ManagementIn the main function, dynamic memory allocation is used because the number of triangles ($n$) is input by the user at runtime.malloc(n \* sizeof(triangle)) is used to reserve the exact amount of memory needed.3. Source CodeC#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
-Cras tempor risus et augue vulputate venenatis. Fusce dolor orci, mollis id dolor tincidunt, aliquam venenatis tellus. Suspendisse cursus magna ac leo dapibus convallis. Etiam eu dapibus enim. Nam ut quam sit amet dui posuere consequat vitae a leo. In non justo libero. Praesent fermentum est sem, at congue tellus egestas a. Mauris pharetra purus et vestibulum posuere. Maecenas massa augue, sollicitudin ut iaculis ac, vestibulum sed erat. Donec id mi pulvinar, imperdiet magna iaculis, fringilla turpis. Quisque molestie suscipit venenatis. Nunc sed ultrices elit. Curabitur ornare neque vitae pellentesque lacinia. Donec tempor augue ut tellus ullamcorper, ac efficitur sapien tempor. Sed blandit facilisis turpis, ac mattis dolor laoreet vel. Sed et dignissim lectus, quis scelerisque neque.
+struct triangle
+{
+int a;
+int b;
+int c;
+};
 
-In egestas commodo odio, at pharetra massa. Nam dui lacus, aliquam a maximus at, commodo a dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque ut augue eu arcu placerat sollicitudin at eget nisl. In a vulputate mi. Nulla vitae turpis dictum, viverra risus at, maximus lorem. Fusce vel molestie tellus, ac pharetra eros.
+typedef struct triangle triangle;
 
-Sed tellus massa, fermentum et porttitor rhoncus, tincidunt vulputate nibh. Vivamus pretium iaculis mauris in sollicitudin. Sed pulvinar, odio vel imperdiet dapibus, odio risus varius neque, nec lacinia elit nisl consequat tellus. Pellentesque euismod turpis vel eros bibendum, ut aliquet diam vehicula. Aenean rutrum lobortis est, et tincidunt erat. Curabitur malesuada at eros eget venenatis. Quisque sit amet nulla sem. Donec scelerisque tellus et sagittis egestas. Mauris quis convallis urna, et semper metus. Nulla sem risus, vehicula non porta sit amet, dignissim non justo. Maecenas placerat ut justo tincidunt pellentesque. Aenean vestibulum leo quis nisl commodo posuere. Proin vel velit velit. Proin tempor metus eros, sollicitudin efficitur leo malesuada non. Curabitur consectetur pharetra faucibus. Nullam suscipit odio nec posuere tempor.
+void sort_by_area(triangle* tr, int n) {
+/\*\*
+* Sort an array a of the length n
+\*/
+// Note: sorting_index is declared but not used in this logic
+int sorting_index[n];
+float area[n];
 
-In varius consectetur dui a faucibus. Suspendisse scelerisque placerat nisi rhoncus vehicula. Sed justo sapien, hendrerit a semper a, accumsan sit amet nisl. Ut id tristique nunc, vitae placerat turpis. Morbi leo arcu, aliquam ac enim ac, consequat interdum dui. Aliquam id nisl nec nibh fringilla rhoncus et sit amet metus. Donec pulvinar eleifend ex, non ullamcorper purus. Suspendisse blandit justo quam, vitae iaculis sapien ullamcorper vel. Vivamus condimentum, orci in interdum fermentum, nunc justo tempor sapien, eget aliquam lacus urna in nisl. Pellentesque id eros auctor, consequat risus at, tincidunt dui. Phasellus bibendum dignissim turpis a pulvinar.
+    // Step 1: Calculate Area for all triangles
+    for (int i=0; i<n; i++) {
+        float p = (tr[i].a + tr[i].b + tr[i].c) / 2.0;
+        area[i] = sqrt(p * (p - tr[i].a) * (p - tr[i].b) * (p - tr[i].c));
+    }
 
-Generated 5 paragraphs, 526 words, 3608 bytes of Lorem Ipsum
+    float temp;
+    triangle onetri;
+
+    // Step 2: Sort based on Area (Bubble-style sort)
+    for (int i=1; i<n; i++) {
+        for (int j=0; j<i; j++) {
+            if(area[j] > area[i]){
+                // Swap Area values
+                temp = area[j];
+                area[j] = area[i];
+                area[i] = temp;
+
+                // Swap Triangle structs to match the area order
+                onetri = tr[j];
+                tr[j] = tr[i];
+                tr[i] = onetri;
+            }
+        }
+    }
+
+}
+
+int main()
+{
+int n;
+// Read number of triangles
+scanf("%d", &n);
+
+    // Allocate memory dynamically
+    triangle *tr = malloc(n * sizeof(triangle));
+
+    // Read sides for each triangle
+    for (int i = 0; i < n; i++) {
+        scanf("%d%d%d", &tr[i].a, &tr[i].b, &tr[i].c);
+    }
+
+    // Perform Sort
+    sort_by_area(tr, n);
+
+    // Print Sorted Triangles
+    for (int i = 0; i < n; i++) {
+        printf("%d %d %d\n", tr[i].a, tr[i].b, tr[i].c);
+    }
+
+    return 0;
+
+} 4. Complexity NotesTime Complexity: The sorting algorithm uses nested loops (i from 1 to $n$, j from 0 to $i$). This results in a time complexity of $O(n^2)$. While acceptable for small inputs, algorithms like Quicksort ($O(n \log n)$) are preferred for very large datasets.Space Complexity: The function creates an auxiliary array area[n], making the space complexity $O(n)$.5. Usage ExampleInput:Plaintext3
+7 24 25
+5 12 13
+3 4 5
+(Explanation: 3 triangles. The 7-24-25 triangle has area 84. The 5-12-13 triangle has area 30. The 3-4-5 triangle has area 6.)Output:Plaintext3 4 5
+5 12 13
+7 24 25
+(The output is sorted by area: 6, then 30, then 84)
