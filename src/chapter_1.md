@@ -4,17 +4,7 @@ This program accepts a list of triangles defined by the lengths of their three s
 
 1. Mathematical Logic: Heron's Formula
 
-To calculate the area of a triangle when only the lengths of the sides are known, the program uses Heron's Formula. First, the semi-perimeter ($p$) is calculated:
-
-$$
-p = \frac{a + b + c}{2}
-$$
-
-Then, the area ($A$) is derived using:
-
-$$
-A = \sqrt{p(p-a)(p-b)(p-c)}
-$$
+To calculate the area of a triangle when only the lengths of the sides are known, the program uses Heron's Formula.First, the semi-perimeter ($p$) is calculated:$$p = \frac{a + b + c}{2}$$Then, the area ($A$) is derived using:$$A = \sqrt{p(p-a)(p-b)(p-c)}$$
 
 2. Code Structure & Analysis
 
@@ -24,9 +14,9 @@ $$
 
    ```c
    struct triangle {
-        int a;
-        int b;
-        int c;
+       int a;
+       int b;
+       int c;
    };
    ```
 
