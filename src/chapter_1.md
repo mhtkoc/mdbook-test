@@ -4,37 +4,47 @@ This program accepts a list of triangles defined by the lengths of their three s
 
 1. Mathematical Logic: Heron's Formula
 
-To calculate the area of a triangle when only the lengths of the sides are known, the program uses Heron's Formula.First, the semi-perimeter ($p$) is calculated:$$p = \frac{a + b + c}{2}$$Then, the area ($A$) is derived using:$$A = \sqrt{p(p-a)(p-b)(p-c)}$$
+To calculate the area of a triangle when only the lengths of the sides are known, the program uses Heron's Formula. First, the semi-perimeter ($p$) is calculated:
 
-2.  Code Structure & Analysis
+$$
+p = \frac{a + b + c}{2}
+$$
 
-    **Data Structure**
+Then, the area ($A$) is derived using:
 
-    The program uses a struct to organize the data. This keeps the three sides of a triangle grouped together as a single unit.
+$$
+A = \sqrt{p(p-a)(p-b)(p-c)}
+$$
 
-    ```c
-    struct triangle {
+2. Code Structure & Analysis
+
+   **Data Structure**
+
+   The program uses a struct to organize the data. This keeps the three sides of a triangle grouped together as a single unit.
+
+   ```c
+   struct triangle {
         int a;
         int b;
         int c;
-    };
-    ```
+   };
+   ```
 
-    **The `sort_by_area` Function**
+   **The `sort_by_area` Function**
 
-    This function performs two main tasks:
+   This function performs two main tasks:
 
-    1. Calculation: It iterates through the array of triangles and computes the area for each, storing the results in a temporary area[] array.
+   1. Calculation: It iterates through the array of triangles and computes the area for each, storing the results in a temporary area[] array.
 
-    2. Sorting: It uses a nested loop algorithm (similar to Bubble Sort) to reorder the triangles.It compares the areas of the triangles.If a triangle has a smaller area than a preceding triangle, both the area value and the triangle struct are swapped.
+   2. Sorting: It uses a nested loop algorithm (similar to Bubble Sort) to reorder the triangles. It compares the areas of the triangles. If a triangle has a smaller area than a preceding triangle, both the area value and the triangle struct are swapped.
 
-    **Memory Management**
+   **Memory Management**
 
-    In the main function, dynamic memory allocation is used because the number of triangles ($n$) is input by the user at runtime.
+   In the main function, dynamic memory allocation is used because the number of triangles ($n$) is input by the user at runtime.
 
-    - malloc(n \* sizeof(triangle)) is used to reserve the exact amount of memory needed.
+   - malloc(n \* sizeof(triangle)) is used to reserve the exact amount of memory needed.
 
-3.  Source Code
+3. Source Code
 
 ```c
 #include <stdio.h>
@@ -115,17 +125,17 @@ int main()
 
    **Time Complexity:**
 
-- The sorting algorithm uses nested loops (i from 1 to $n$, j from 0 to $i$). This results in a time complexity of $O(n^2)$. While acceptable for small inputs, algorithms like Quicksort ($O(n \log n)$) are preferred for very large datasets.
-- Space Complexity: The function creates an auxiliary array area[n], making the space complexity $O(n)$.
+   - The sorting algorithm uses nested loops (i from 1 to $n$, j from 0 to $i$). This results in a time complexity of $O(n^2)$. While acceptable for small inputs, algorithms like Quicksort ($O(n \log n)$) are preferred for very large datasets.
+   - Space Complexity: The function creates an auxiliary array area[n], making the space complexity $O(n)$.
 
 5. Usage Example
 
 **Input:**
 
 ```plainText
-  7 24 25
-  5 12 13
-  3 4 5
+7 24 25
+5 12 13
+3 4 5
 ```
 
 (Explanation: 3 triangles. The 7-24-25 triangle has area 84. The 5-12-13 triangle has area 30. The 3-4-5 triangle has area 6.)
