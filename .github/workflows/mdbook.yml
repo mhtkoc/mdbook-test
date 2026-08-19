@@ -29,7 +29,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       # 🚀 DEĞİŞEN KISIM: Cargo ile 10 dakika derlemek yerine 
       # hazır (pre-built) binary dosyaları saniyeler içinde indirilir.
@@ -41,7 +41,7 @@ jobs:
           
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         
       - name: Build with mdBook
         run: mdbook build
