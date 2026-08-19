@@ -1,0 +1,4 @@
+/* Tüm mdBook paragraflarını iki yana yaslar */
+.content main p {
+    text-align: justify;
+}

@@ -4,3 +4,5 @@ language = "tr"
 src = "src"
 title = "mhtkoc-blog"
 [preprocessor.katex]
+[output.html]
+additional-css = ["src/custom.css"] # Eğer src içindeyse ["src/custom.css"] yapın

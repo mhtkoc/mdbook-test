@@ -61,13 +61,13 @@ C dili, yapısal (procedural) bir dil olarak tasarlanmıştır. Sınıflar (clas
 
 ```C
 struct class*vtable {
-void (\_draw)(struct object* self);
-int (\*get_area)(struct object\* self);
+  void (\_draw)(struct object* self);
+  int (\*get_area)(struct object\* self);
 };
 
 struct object {
-struct class*vtable* class;
-/_ Veri üyeleri ve kapsüllenmiş (encapsulated) durumlar _/
+  struct class*vtable* class;
+  /* Veri üyeleri ve kapsüllenmiş (encapsulated) durumlar */
 };
 ```
 
@@ -87,11 +87,11 @@ Bir çekirdek geliştiricisi donanım için sürücü yazdığında, file_operat
 
 ```C
 static struct file_operations mydev_fops = {
-.owner = THIS_MODULE,
-.open = mydev_open,
-.read = mydev_read,
-.write = mydev_write,
-.release = mydev_release,
+  .owner = THIS_MODULE,
+  .open = mydev_open,
+  .read = mydev_read,
+  .write = mydev_write,
+  .release = mydev_release,
 };
 ```
 

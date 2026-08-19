@@ -1,0 +1,2 @@
+- [Gömülü Yazılım Mimarilerinde C Programlama Dili Fonksiyon İşaretçileri](./function_pointers_on_embedded.md)
+- [C Programlama Dilinde Fonksiyon İşaretçileri](./function_pointers_general.md)
