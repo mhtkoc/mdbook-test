@@ -186,3 +186,5 @@ Fonksiyon işaretçileri, C programlama dilinde gömülü sistem mimarlarına mo
 Emniyet kritik ve yüksek güvenilirlikli gömülü projelerde fonksiyon işaretçilerinden faydalanırken, çalışma zamanında değişmeyecek tüm yönlendirme tablolarının const niteleyicisi ile Flash/ROM belleğe sabitlenmesi mimari bir zorunluluk olarak uygulanmalıdır. Karmaşıklığı ve tip hatalarını önlemek amacıyla tüm fonksiyon işaretçileri typedef soyutlaması arkasına alınmalı, parametresiz fonksiyon imzalarında void ifadesi açıkça belirtilmelidir.
 
 RAM üzerinde tutulan dinamik fonksiyon işaretçilerinin dereference edilmeden önce NULL denetimine ve gerekirse adres aralığı doğrulamasına tabi tutulması, sistem kararlılığını korur. MISRA C:2012 Rule 11.1 uyarınca fonksiyon işaretçileri üzerinde emniyetsiz tip cast işlemlerinden kesinlikle kaçınılmalı, projenin güvenlik sertifikasyonu süreçlerinde (ISO 26262) dolaylı çağrı noktalarının test kapsama oranları eksiksiz bir şekilde doğrulanmalıdır.
+
+[Fonksiyon İşaretçilerine Genel bakış...](function_pointers_general.md)

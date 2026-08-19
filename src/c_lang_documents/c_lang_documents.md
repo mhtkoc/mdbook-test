@@ -1,4 +1,4 @@
 # C programlama dili ilgili yazılar:
 
-- [Fonksiyon İşaretçileri](./function_pointers.md)
 - [Sorting Triangles by Area in C](./chapter_1.md)
+- [Fonksiyon İşaretçileri](./function_pointers_on_embedded.md)
